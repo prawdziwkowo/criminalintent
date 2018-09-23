@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CriminalIntent</string>
+    <string name="crime_title_hint">Wprowadź tytuł sprawy:</string>
+    <string name="crime_title_label">Tytuł</string>
+    <string name="crime_details_label">Opis</string>
+    <string name="crime_solved_label">Rozwiązana</string>
+    <string name="crime_title">Tytuł sprawy</string>
+    <string name="crime_date">Data</string>
+    <string name="police_contact">Skontaktuj się z policją</string>
+</resources>
+
