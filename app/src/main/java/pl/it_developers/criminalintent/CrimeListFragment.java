@@ -81,18 +81,11 @@ public class CrimeListFragment extends Fragment {
         @NonNull
         @Override
         public CrimeHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            if (viewType == 1) {
-                View view = LayoutInflater
-                        .from(parent.getContext())
-                        .inflate(R.layout.list_item_crime_full, parent, false);
-                return new CrimeHolder(view);
+            View view = LayoutInflater
+                    .from(parent.getContext())
+                    .inflate(R.layout.list_item_crime, parent, false);
 
-            } else {
-                View view = LayoutInflater
-                        .from(parent.getContext())
-                        .inflate(R.layout.list_item_crime, parent, false);
-                return new CrimeHolder(view);
-            }
+            return new CrimeHolder(view);
         }
 
         @Override
@@ -104,14 +97,6 @@ public class CrimeListFragment extends Fragment {
         @Override
         public int getItemCount() {
             return crimes.size();
-        }
-
-        @Override
-        public int getItemViewType(final int position) {
-            if (crimes.get(position).isRequiredPolice()) {
-                return 1;
-            }
-            return 0;
         }
     }
 }
