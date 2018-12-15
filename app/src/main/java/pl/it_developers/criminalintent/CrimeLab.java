@@ -11,6 +11,8 @@ public class CrimeLab {
 
     private List<Crime> crimes;
 
+    private int lastUpadedCrimeIndex;
+
     public static CrimeLab get(Context context) {
         if (crimeLab == null) {
             crimeLab = new CrimeLab(context);
@@ -33,12 +35,24 @@ public class CrimeLab {
         return crimes;
     }
 
-    public Crime getCtrime(UUID uuid) {
+    public Crime getCrime(UUID uuid) {
         for (Crime crime : crimes) {
             if (crime.getId().equals(uuid)) {
                 return crime;
             }
         }
         return null;
+    }
+
+    public int getLastUpadedCrimeIndex() {
+        return lastUpadedCrimeIndex;
+    }
+
+    public void setLastUpadedCrimeIndex(int lastUpadedCrimeIndex) {
+        this.lastUpadedCrimeIndex = lastUpadedCrimeIndex;
+    }
+
+    public int getCrimeIndex(Crime crime) {
+        return crimes.indexOf(crime);
     }
 }

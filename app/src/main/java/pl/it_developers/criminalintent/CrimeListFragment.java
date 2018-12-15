@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -45,7 +44,7 @@ public class CrimeListFragment extends Fragment {
             crimeAdapter = new CrimeAdapter(crimes);
             crimeRecyclerView.setAdapter(crimeAdapter);
         } else {
-            crimeAdapter.notifyDataSetChanged();
+            crimeAdapter.notifyItemChanged(crimeLab.getLastUpadedCrimeIndex());
         }
     }
 
