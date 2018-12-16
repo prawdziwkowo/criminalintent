@@ -1,6 +1,7 @@
 package pl.it_developers.criminalintent;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.UUID;
 
 public class Crime {
