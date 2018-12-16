@@ -33,4 +33,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/crime_solved_label"/>
+
+    <Button
+        android:id="@+id/crime_first"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/first_crime"/>
+
+    <Button
+        android:id="@+id/crime_last"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/last_crime"/>
 </LinearLayout>

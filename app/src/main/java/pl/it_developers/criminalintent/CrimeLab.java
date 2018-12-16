@@ -50,4 +50,20 @@ public class CrimeLab {
         }
         return -1;
     }
+
+    public boolean isFirstCrime(UUID uuid) {
+        return getCrimeIndex(uuid) == 0;
+    }
+
+    public boolean isLastCrime(UUID uuid) {
+        return getCrimeIndex(uuid) == (crimes.size() - 1);
+    }
+
+    public Crime getFirstCrime() {
+        return crimes.get(0);
+    }
+
+    public Crime getLastCrime() {
+        return crimes.get(crimes.size() - 1);
+    }
 }

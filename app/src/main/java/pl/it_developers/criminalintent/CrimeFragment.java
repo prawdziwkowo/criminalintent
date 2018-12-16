@@ -1,5 +1,6 @@
 package pl.it_developers.criminalintent;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,10 +19,14 @@ import java.util.UUID;
 
 public class CrimeFragment extends Fragment {
     private static final String ARG_CRIME_ID = "crime_id";
+    private CrimeLab crimeLab;
     private Crime crime;
     private EditText titleField;
     private Button dateButton;
     private CheckBox solvedCheckbox;
+
+    private Button firstCrimeButton;
+    private Button lastCrimeButton;
 
     public static CrimeFragment newInstance(UUID crimeId) {
         Bundle args = new Bundle();
@@ -37,13 +42,13 @@ public class CrimeFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         UUID crimeId = (UUID) getArguments().getSerializable(ARG_CRIME_ID);
-
-        crime = CrimeLab.get(getActivity()).getCrime(crimeId);
+        crimeLab = CrimeLab.get(getActivity());
+        crime = crimeLab.getCrime(crimeId);
     }
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_crime, container, false);
 
         titleField = (EditText) view.findViewById(R.id.crime_title);
@@ -78,6 +83,29 @@ public class CrimeFragment extends Fragment {
             }
         });
 
+        firstCrimeButton = (Button) view.findViewById(R.id.crime_first);
+        firstCrimeButton.setEnabled(!crimeLab.isFirstCrime(crime.getId()));
+        firstCrimeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setPage(crimeLab.getFirstCrime());
+            }
+        });
+
+        lastCrimeButton = (Button) view.findViewById(R.id.crime_last);
+        lastCrimeButton.setEnabled(!crimeLab.isLastCrime(crime.getId()));
+        lastCrimeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setPage(crimeLab.getLastCrime());
+            }
+        });
+
         return view;
+    }
+
+    private void setPage(Crime crime) {
+        Intent intent = CrimePagerActivity.newIntent(getActivity(), crime.getId());
+        startActivity(intent);
     }
 }
