@@ -47,4 +47,8 @@ public class CrimeLab {
         }
         return -1;
     }
+
+    public void deleteCrime(UUID uuid) {
+        crimes.remove(getCrimeIndex(uuid));
+    }
 }

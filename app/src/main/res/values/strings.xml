@@ -12,4 +12,5 @@
     <string name="show_subtitle">Pokaż podtytuł</string>
     <string name="hide_subtitle">Ukryj podtytuł</string>
     <string name="subtitle_format">%1$d przestępstw</string>
+    <string name="delete_crime">Usuń przestępstwo</string>
 </resources>
