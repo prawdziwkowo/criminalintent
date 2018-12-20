@@ -103,6 +103,14 @@ public class CrimeListFragment extends Fragment {
         }
 
         updateSubtitle();
+
+        int crimesCount = crimeLab.getCrimes().size();
+
+        if (crimesCount > 0) {
+            getActivity().findViewById(R.id.text_no_items).setVisibility(View.GONE);
+        } else {
+            getActivity().findViewById(R.id.text_no_items).setVisibility(View.VISIBLE);
+        }
     }
 
     private void updateSubtitle() {
