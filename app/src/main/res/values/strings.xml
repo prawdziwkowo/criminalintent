@@ -13,4 +13,10 @@
     <string name="hide_subtitle">Ukryj podtytuł</string>
     <string name="subtitle_format">%1$d przestępstw</string>
     <string name="delete_crime">Usuń przestępstwo</string>
+
+    <plurals name="subtitle_plural">
+        <item quantity="one">1 przestępstwo</item>
+        <item quantity="few">%d przestępstwa</item>
+        <item quantity="other">%d przestępstw</item>
+    </plurals>
 </resources>
