@@ -12,4 +12,15 @@
     <string name="show_subtitle">Pokaż podtytuł</string>
     <string name="hide_subtitle">Ukryj podtytuł</string>
     <string name="subtitle_format">%1$d przestępstw</string>
+    <string name="crime_suspect">Wybierz podejrzanego</string>
+    <string name="crime_report_button">Wyślij raport o przestępstwie</string>
+    <string name="crime_report">%1$s!
+        Przestępstwo zostało ujawnione w dniu %2$s. %3$s, i %4$s
+    </string>
+    <string name="crime_report_solved">Sprawa rozwiązana</string>
+    <string name="crime_report_unsolved">Sprawa nierozwiązana</string>
+    <string name="crime_report_no_suspect">Brak podejrzanego.</string>
+    <string name="crime_report_suspect">Podejrzany to %s.</string>
+    <string name="crime_report_subject">CriminalIntent — raport o przestępstwie</string>
+    <string name="send_report">Wyślij raport za pomocą</string>
 </resources>
