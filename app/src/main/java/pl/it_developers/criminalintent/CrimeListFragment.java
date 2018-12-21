@@ -104,12 +104,22 @@ public class CrimeListFragment extends Fragment {
         }
 
         updateSubtitle();
+
+        int crimesCount = crimeLab.getCrimes().size();
+
+        if (crimesCount > 0) {
+            getActivity().findViewById(R.id.text_no_items).setVisibility(View.GONE);
+        } else {
+            getActivity().findViewById(R.id.text_no_items).setVisibility(View.VISIBLE);
+        }
     }
 
     private void updateSubtitle() {
         CrimeLab crimeLab = CrimeLab.get(getActivity());
         int crimesCount = crimeLab.getCrimes().size();
-        String subtitle = getString(R.string.subtitle_format, crimesCount);
+
+        String subtitle = getResources()
+                .getQuantityString(R.plurals.subtitle_plural, crimesCount, crimesCount);
 
         if (!isSubtitleVisible) {
             subtitle = null;

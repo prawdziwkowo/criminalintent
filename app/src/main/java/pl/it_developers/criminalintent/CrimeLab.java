@@ -96,6 +96,10 @@ public class CrimeLab {
         return -1;
     }
 
+    public void deleteCrime(UUID uuid) {
+        crimes.remove(getCrimeIndex(uuid));
+    }
+
     private static ContentValues getContentValues(Crime crime) {
         ContentValues values = new ContentValues();
         values.put(CrimeTable.Cols.UUID, crime.getId().toString());
