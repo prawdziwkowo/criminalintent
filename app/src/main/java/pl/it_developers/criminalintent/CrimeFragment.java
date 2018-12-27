@@ -40,6 +40,7 @@ public class CrimeFragment extends Fragment {
     private CheckBox solvedCheckbox;
     private Button reportButton;
     private Button suspectButton;
+    private Button callButton;
 
     public static CrimeFragment newInstance(UUID crimeId) {
         Bundle args = new Bundle();
@@ -146,6 +147,71 @@ public class CrimeFragment extends Fragment {
         PackageManager packageManager = getActivity().getPackageManager();
         if (packageManager.resolveActivity(pickContact, PackageManager.MATCH_DEFAULT_ONLY) == null) {
             suspectButton.setEnabled(false);
+            callButton.setEnabled(false);
+        }
+
+        callButton = (Button) view.findViewById(R.id.call_to_suspect);
+        callButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] queryFields = new String[] {
+                        ContactsContract.Contacts._ID,
+                };
+
+                Cursor cursor = getActivity().getContentResolver().query(
+                        ContactsContract.Contacts.CONTENT_URI,
+                       queryFields,
+                        "DISPLAY_NAME = ?",
+                        new String[] {crime.getSuspect()},
+                        null
+                );
+
+                try {
+                    if (cursor.getCount() == 0) {
+                        return;
+                    }
+
+                    cursor.moveToFirst();
+
+                    String contactId =
+                            cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
+
+                    Cursor phonesCursor = getActivity().getContentResolver().query(
+                            ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                            null,
+                            ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?",
+                            new String[] {contactId},
+                            null
+                    );
+
+                    try {
+                        if (cursor.getCount() == 0) {
+                            return;
+                        }
+
+                        phonesCursor.moveToFirst();
+
+                        String number = phonesCursor.getString(phonesCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+
+                        Uri numberUri = Uri.parse("tel:" + number);
+
+                        Intent intent = new Intent(Intent.ACTION_DIAL, numberUri);
+
+                        startActivity(intent);
+
+                    } finally {
+                        phonesCursor.close();
+                    }
+
+                } finally {
+                    cursor.close();
+                }
+
+            }
+        });
+
+        if (crime.getSuspect() == null) {
+            callButton.setEnabled(false);
         }
 
         return view;
@@ -176,6 +242,7 @@ public class CrimeFragment extends Fragment {
                 String suspect = c.getString(0);
                 crime.setSuspect(suspect);
                 suspectButton.setText(suspect);
+                callButton.setEnabled(true);
             } finally {
                 c.close();
             }
