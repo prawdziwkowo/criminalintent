@@ -1,4 +1,4 @@
-package pl.it_developers.criminalintent;
+package pl.it_developers.android.criminalintent;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,8 +35,8 @@ public class CrimeListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_crime_list, container, false);
-        crimeRecyclerView = (RecyclerView) view.findViewById(R.id.crime_recycler_view);
+        View view = inflater.inflate(pl.it_developers.android.criminalintent.R.layout.fragment_crime_list, container, false);
+        crimeRecyclerView = (RecyclerView) view.findViewById(pl.it_developers.android.criminalintent.R.id.crime_recycler_view);
         crimeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         if (savedInstanceState != null) {
@@ -57,26 +57,26 @@ public class CrimeListFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.fragment_crime_list, menu);
+        inflater.inflate(pl.it_developers.android.criminalintent.R.menu.fragment_crime_list, menu);
 
-        MenuItem subtitleItem = menu.findItem(R.id.show_subtitle);
+        MenuItem subtitleItem = menu.findItem(pl.it_developers.android.criminalintent.R.id.show_subtitle);
         if (isSubtitleVisible) {
-            subtitleItem.setTitle(R.string.hide_subtitle);
+            subtitleItem.setTitle(pl.it_developers.android.criminalintent.R.string.hide_subtitle);
         } else {
-            subtitleItem.setTitle(R.string.show_subtitle);
+            subtitleItem.setTitle(pl.it_developers.android.criminalintent.R.string.show_subtitle);
         }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.new_crime:
+            case pl.it_developers.android.criminalintent.R.id.new_crime:
                 Crime crime = new Crime();
                 CrimeLab.get(getActivity()).addCrime(crime);
                 Intent intent = CrimePagerActivity.newIntent(getActivity(), crime.getId());
                 startActivity(intent);
                 return true;
-            case R.id.show_subtitle:
+            case pl.it_developers.android.criminalintent.R.id.show_subtitle:
                 isSubtitleVisible = !isSubtitleVisible;
                 getActivity().invalidateOptionsMenu();
                 updateSubtitle();
@@ -109,7 +109,7 @@ public class CrimeListFragment extends Fragment {
     private void updateSubtitle() {
         CrimeLab crimeLab = CrimeLab.get(getActivity());
         int crimesCount = crimeLab.getCrimes().size();
-        String subtitle = getString(R.string.subtitle_format, crimesCount);
+        String subtitle = getString(pl.it_developers.android.criminalintent.R.string.subtitle_format, crimesCount);
 
         if (!isSubtitleVisible) {
             subtitle = null;
@@ -128,9 +128,9 @@ public class CrimeListFragment extends Fragment {
 
         public CrimeHolder(View view) {
             super(view);
-            titleTextView = (TextView) itemView.findViewById(R.id.crime_title);
-            dateTextView = (TextView) itemView.findViewById(R.id.crime_date);
-            solvedImageView = (ImageView) itemView.findViewById(R.id.crime_solved);
+            titleTextView = (TextView) itemView.findViewById(pl.it_developers.android.criminalintent.R.id.crime_title);
+            dateTextView = (TextView) itemView.findViewById(pl.it_developers.android.criminalintent.R.id.crime_date);
+            solvedImageView = (ImageView) itemView.findViewById(pl.it_developers.android.criminalintent.R.id.crime_solved);
 
             itemView.setOnClickListener(this);
         }
@@ -162,7 +162,7 @@ public class CrimeListFragment extends Fragment {
         public CrimeHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater
                     .from(parent.getContext())
-                    .inflate(R.layout.list_item_crime, parent, false);
+                    .inflate(pl.it_developers.android.criminalintent.R.layout.list_item_crime, parent, false);
 
             return new CrimeHolder(view);
         }

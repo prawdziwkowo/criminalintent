@@ -1,4 +1,4 @@
-package pl.it_developers.criminalintent;
+package pl.it_developers.android.criminalintent;
 
 import android.content.Context;
 import android.content.Intent;
@@ -28,11 +28,11 @@ public class CrimePagerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_crime_pager);
+        setContentView(pl.it_developers.android.criminalintent.R.layout.activity_crime_pager);
 
         UUID crimeId = (UUID) getIntent().getSerializableExtra(EXTRA_CRIME_ID);
 
-        viewPager = (ViewPager) findViewById(R.id.crime_view_pager);
+        viewPager = (ViewPager) findViewById(pl.it_developers.android.criminalintent.R.id.crime_view_pager);
 
         crimes = CrimeLab.get(this).getCrimes();
 

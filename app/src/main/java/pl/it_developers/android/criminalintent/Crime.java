@@ -1,7 +1,6 @@
-package pl.it_developers.criminalintent;
+package pl.it_developers.android.criminalintent;
 
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.UUID;
 
 public class Crime {
@@ -54,5 +53,9 @@ public class Crime {
 
     public void setSuspect(String suspect) {
         this.suspect = suspect;
+    }
+
+    public String getPhotoFileName() {
+        return "IMG_" + getId().toString() + ".jpg";
     }
 }

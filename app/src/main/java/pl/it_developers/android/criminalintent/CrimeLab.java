@@ -1,18 +1,18 @@
-package pl.it_developers.criminalintent;
+package pl.it_developers.android.criminalintent;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import pl.it_developers.criminalintent.database.CrimeBaseHelper;
-import pl.it_developers.criminalintent.database.CrimeCursorWrapper;
-import pl.it_developers.criminalintent.database.CrimeDbSchema;
-import pl.it_developers.criminalintent.database.CrimeDbSchema.CrimeTable;
+import pl.it_developers.android.criminalintent.database.CrimeBaseHelper;
+import pl.it_developers.android.criminalintent.database.CrimeCursorWrapper;
+import pl.it_developers.android.criminalintent.database.CrimeDbSchema.CrimeTable;
 
 public class CrimeLab {
     private static CrimeLab crimeLab;
@@ -119,5 +119,10 @@ public class CrimeLab {
         );
 
         return new CrimeCursorWrapper(cursor);
+    }
+
+    public File getPhotoFile(Crime crime) {
+        File filesDir = context.getFilesDir();
+        return new File(filesDir, crime.getPhotoFileName());
     }
 }

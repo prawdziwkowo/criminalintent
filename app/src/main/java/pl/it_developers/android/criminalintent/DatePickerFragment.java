@@ -1,4 +1,4 @@
-package pl.it_developers.criminalintent;
+package pl.it_developers.android.criminalintent;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -19,7 +19,7 @@ import java.util.GregorianCalendar;
 public class DatePickerFragment extends DialogFragment {
     private static final String ARG_DATE = "date";
 
-    public static final String EXTRA_DATE = "pl.it-developers.android.ciminalintent.date";
+    public static final String EXTRA_DATE = "pl.it_developers.android.ciminalintent.date";
 
     private DatePicker datePicker;
 
@@ -46,14 +46,14 @@ public class DatePickerFragment extends DialogFragment {
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
         View view = LayoutInflater.from(getActivity())
-                .inflate(R.layout.dialog_date, null);
+                .inflate(pl.it_developers.android.criminalintent.R.layout.dialog_date, null);
 
-        datePicker = (DatePicker) view.findViewById(R.id.dialog_date_picker);
+        datePicker = (DatePicker) view.findViewById(pl.it_developers.android.criminalintent.R.id.dialog_date_picker);
         datePicker.init(year, month, day, null);
 
         return new AlertDialog.Builder(getActivity())
                 .setView(view)
-                .setTitle(R.string.date_picker_title)
+                .setTitle(pl.it_developers.android.criminalintent.R.string.date_picker_title)
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

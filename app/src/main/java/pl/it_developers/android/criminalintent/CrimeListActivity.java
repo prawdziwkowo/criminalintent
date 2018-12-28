@@ -1,4 +1,4 @@
-package pl.it_developers.criminalintent;
+package pl.it_developers.android.criminalintent;
 
 import android.support.v4.app.Fragment;
 

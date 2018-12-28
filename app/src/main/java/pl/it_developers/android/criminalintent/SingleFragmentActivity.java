@@ -1,4 +1,4 @@
-package pl.it_developers.criminalintent;
+package pl.it_developers.android.criminalintent;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,15 +12,15 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fragment);
+        setContentView(pl.it_developers.android.criminalintent.R.layout.activity_fragment);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container);
+        Fragment fragment = fragmentManager.findFragmentById(pl.it_developers.android.criminalintent.R.id.fragment_container);
 
         if (fragment == null) {
             fragment = createFragment();
             fragmentManager.beginTransaction()
-                    .add(R.id.fragment_container, fragment)
+                    .add(pl.it_developers.android.criminalintent.R.id.fragment_container, fragment)
                     .commit();
         }
     }

@@ -1,11 +1,11 @@
-package pl.it_developers.criminalintent.database;
+package pl.it_developers.android.criminalintent.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
 
-import pl.it_developers.criminalintent.database.CrimeDbSchema.CrimeTable;
+import pl.it_developers.android.criminalintent.database.CrimeDbSchema.CrimeTable;
 
 public class CrimeBaseHelper extends SQLiteOpenHelper {
     public static final int VERSION = 1;

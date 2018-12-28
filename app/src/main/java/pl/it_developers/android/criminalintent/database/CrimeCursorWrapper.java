@@ -1,4 +1,4 @@
-package pl.it_developers.criminalintent.database;
+package pl.it_developers.android.criminalintent.database;
 
 import android.database.Cursor;
 import android.database.CursorWrapper;
@@ -6,7 +6,7 @@ import android.database.CursorWrapper;
 import java.util.Date;
 import java.util.UUID;
 
-import pl.it_developers.criminalintent.Crime;
+import pl.it_developers.android.criminalintent.Crime;
 
 public class CrimeCursorWrapper extends CursorWrapper {
     public CrimeCursorWrapper(Cursor cursor) {
