@@ -8,6 +8,7 @@
     <string name="crime_date">Data</string>
     <string name="police_contact">Skontaktuj się z policją</string>
     <string name="date_picker_title">Data przestępstwa:</string>
+    <string name="picture_title">Zdjęcie przestępstwa:</string>
     <string name="new_crime">Nowe przestępstwo</string>
     <string name="show_subtitle">Pokaż podtytuł</string>
     <string name="hide_subtitle">Ukryj podtytuł</string>

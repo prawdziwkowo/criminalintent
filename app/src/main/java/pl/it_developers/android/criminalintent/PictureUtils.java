@@ -32,4 +32,8 @@ public class PictureUtils {
         activity.getWindowManager().getDefaultDisplay().getSize(size);
         return getScaledBitmap(path, size.x, size.y);
     }
+
+    public static Bitmap getBitmap(String path) {
+        return BitmapFactory.decodeFile(path);
+    }
 }

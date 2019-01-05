@@ -37,10 +37,12 @@ import java.util.UUID;
 public class CrimeFragment extends Fragment {
     private static final String ARG_CRIME_ID = "crime_id";
     private static final String DIALOG_DATE = "dialog_date";
+    private static final String DIALOG_PICTURE = "dialog_picture";
 
     private static final int REQUEST_DATE = 0;
     private static final int REQUEST_CONTACT = 1;
     private static final int REQUEST_PHOTO = 2;
+    private static final int REQUEST_PICTURE = 3;
 
     private Crime crime;
     private File photoFile;
@@ -191,6 +193,17 @@ public class CrimeFragment extends Fragment {
 
         photoView = (ImageView) view.findViewById(pl.it_developers.android.criminalintent.R.id.crime_photo);
         updatePhotoView();
+
+
+        photoView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager manager = getFragmentManager();
+                PictureFragment dialog = PictureFragment.newInstance(crime.getId());
+                dialog.setTargetFragment(CrimeFragment.this, REQUEST_PICTURE);
+                dialog.show(manager, DIALOG_PICTURE);
+            }
+        });
 
         return view;
     }
