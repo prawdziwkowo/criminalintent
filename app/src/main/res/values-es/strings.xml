@@ -10,8 +10,6 @@
     <string name="show_subtitle">Mostrar Subtítulos</string>
     <string name="hide_subtitle">Esconder Subtítulos</string>
     <string name="subtitle_format">%1$s crímenes</string>
-    <string name="crime_suspect_text">Elegir Sospechoso</string>
-    <string name="crime_report_text">Enviar el Informe del Crimen</string>
     <string name="crime_report">%1$s!
 El crimen fue descubierto el %2$s. %3$s, y %4$s
 </string>
@@ -21,4 +19,9 @@ El crimen fue descubierto el %2$s. %3$s, y %4$s
     <string name="crime_report_suspect">el/la sospechoso/a es %s.</string>
     <string name="crime_report_subject">IntentoCriminal Informe del Crimen</string>
     <string name="send_report">Enviar el informe del crimen a través de</string>
+    <string name="crime_suspect">Elegir Sospechoso</string>
+    <string name="crime_report_button">Enviar el Informe del Crimen</string>
+    <string name="crime_title">Título para el crimen</string>
+    <string name="crime_date">Fecha</string>
+    <string name="police_contact">Contacto de Polico</string>
 </resources>
