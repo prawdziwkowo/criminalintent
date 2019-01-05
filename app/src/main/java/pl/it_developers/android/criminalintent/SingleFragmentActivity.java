@@ -9,10 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 public abstract class SingleFragmentActivity extends AppCompatActivity {
     protected abstract Fragment createFragment();
 
+    protected int getLayoutResId() {
+        return R.layout.activity_fragment;
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(pl.it_developers.android.criminalintent.R.layout.activity_fragment);
+        setContentView(getLayoutResId());
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment = fragmentManager.findFragmentById(pl.it_developers.android.criminalintent.R.id.fragment_container);

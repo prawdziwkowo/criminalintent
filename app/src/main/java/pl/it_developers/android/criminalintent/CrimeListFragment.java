@@ -1,5 +1,6 @@
 package pl.it_developers.android.criminalintent;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -25,6 +26,27 @@ public class CrimeListFragment extends Fragment {
     private RecyclerView crimeRecyclerView;
     private CrimeAdapter crimeAdapter;
     private boolean isSubtitleVisible;
+
+    private Callbacks callbacks;
+
+    /**
+     * Wymagany interface dla aktywności hostujących
+     */
+    public interface Callbacks {
+        void onCrimeSelected(Crime crime);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        callbacks = (Callbacks) context;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        callbacks = null;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,11 +92,11 @@ public class CrimeListFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case pl.it_developers.android.criminalintent.R.id.new_crime:
+            case R.id.new_crime:
                 Crime crime = new Crime();
                 CrimeLab.get(getActivity()).addCrime(crime);
-                Intent intent = CrimePagerActivity.newIntent(getActivity(), crime.getId());
-                startActivity(intent);
+                updateUI();
+                callbacks.onCrimeSelected(crime);
                 return true;
             case pl.it_developers.android.criminalintent.R.id.show_subtitle:
                 isSubtitleVisible = !isSubtitleVisible;
@@ -92,7 +114,7 @@ public class CrimeListFragment extends Fragment {
         outState.putBoolean(SAVED_SUBTITLE_VISIBLE, isSubtitleVisible);
     }
 
-    private void updateUI() {
+    public void updateUI() {
         CrimeLab crimeLab = CrimeLab.get(getActivity());
         List<Crime> crimes = crimeLab.getCrimes();
         if (crimeAdapter == null) {
@@ -145,8 +167,7 @@ public class CrimeListFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
-            Intent intent = CrimePagerActivity.newIntent(getActivity(), crime.getId());
-            startActivity(intent);
+            callbacks.onCrimeSelected(crime);
         }
     }
 
