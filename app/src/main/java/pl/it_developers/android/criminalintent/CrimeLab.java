@@ -50,6 +50,25 @@ public class CrimeLab {
         );
     }
 
+    public void deleteCrimeByIndex(int index){
+        List<Crime> crimes = getCrimes();
+        Crime crime = crimes.get(index);
+        if (crime != null) {
+            deleteCrime(crime);
+        }
+    }
+
+    public void deleteCrime(Crime crime) {
+        String uuidString = crime.getId().toString();
+        ContentValues values = getContentValues(crime);
+
+        database.delete(
+                CrimeTable.NAME,
+                CrimeTable.Cols.UUID + " = ?",
+                new String[] {uuidString}
+        );
+    }
+
     public List<Crime> getCrimes() {
         List<Crime> crimes = new ArrayList<>();
 

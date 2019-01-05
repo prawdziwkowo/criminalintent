@@ -1,7 +1,6 @@
 package pl.it_developers.android.criminalintent;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,6 +8,8 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -57,9 +58,29 @@ public class CrimeListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(pl.it_developers.android.criminalintent.R.layout.fragment_crime_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_crime_list, container, false);
         crimeRecyclerView = (RecyclerView) view.findViewById(pl.it_developers.android.criminalintent.R.id.crime_recycler_view);
         crimeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
+        ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                // Item swiped.
+                int index = viewHolder.getAdapterPosition();
+
+                Log.d("Pozycja_____________: ", "" + index );
+
+                CrimeLab.get(getActivity()).deleteCrimeByIndex(index);
+                updateUI();
+            }
+        };
+        // Attach it to recyclerview
+        new ItemTouchHelper(simpleCallback).attachToRecyclerView(crimeRecyclerView);
 
         if (savedInstanceState != null) {
             isSubtitleVisible = savedInstanceState.getBoolean(SAVED_SUBTITLE_VISIBLE);
