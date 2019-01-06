@@ -24,4 +24,7 @@
     <string name="crime_report_subject">CriminalIntent — raport o przestępstwie</string>
     <string name="send_report">Wyślij raport za pomocą</string>
     <string name="date_format">yyyy-MM-dd hh:mm:ss</string>
+    <string name="crime_photo_button_description">Zrób zdjęcie popełnienia przestępstwa</string>
+    <string name="crime_photo_no_image_description">Brak zdjęcia przestępstwa</string>
+    <string name="crime_photo_image_description">Zdjęcie przestępstwa</string>
 </resources>
