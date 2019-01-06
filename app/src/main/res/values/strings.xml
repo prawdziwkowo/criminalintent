@@ -23,4 +23,5 @@
     <string name="crime_report_suspect">Podejrzany to %s.</string>
     <string name="crime_report_subject">CriminalIntent — raport o przestępstwie</string>
     <string name="send_report">Wyślij raport za pomocą</string>
+    <string name="date_format">yyyy-MM-dd hh:mm:ss</string>
 </resources>

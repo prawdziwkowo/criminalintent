@@ -24,4 +24,5 @@ El crimen fue descubierto el %2$s. %3$s, y %4$s
     <string name="crime_title">Título para el crimen</string>
     <string name="crime_date">Fecha</string>
     <string name="police_contact">Contacto de Polico</string>
+    <string name="date_format">yyyy/MM/dd hh:mm:ss</string>
 </resources>

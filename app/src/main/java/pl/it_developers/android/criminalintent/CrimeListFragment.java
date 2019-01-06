@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -181,7 +182,10 @@ public class CrimeListFragment extends Fragment {
         public void bind(Crime crime) {
             this.crime = crime;
             titleTextView.setText(this.crime.getTitle());
-            dateTextView.setText(this.crime.getDate().toString());
+            String dateFormat = getString(R.string.date_format);
+            String dateString = DateFormat.format(dateFormat,
+                    crime.getDate()).toString();
+            dateTextView.setText(dateString);
             dateTextView.setVisibility(View.VISIBLE);
             solvedImageView.setVisibility(crime.isSolved() ? View.VISIBLE : View.GONE);
         }
